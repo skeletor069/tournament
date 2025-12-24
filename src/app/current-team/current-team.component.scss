@@ -1,0 +1,43 @@
+.draw-panel {
+  background-color: #09090b;
+  color: rgba($color: gray, $alpha: 0.9);
+}
+
+.title {
+  //outline: 1px solid rgba($color: gray, $alpha: 0.9);
+  background-color: rgba($color: gray, $alpha: 0.2);
+  border-radius: 20px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.players-panel {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  //margin-top: 1rem;
+  //height: 100px;
+}
+
+.player {
+  padding: 1.5rem;
+  outline: 1px solid gray;
+  flex: 0.5;
+  background-color: #a3e635;
+  color: rgba($color: black, $alpha: 0.9);
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.ytd {
+  outline: 2px dashed rgba($color: gray, $alpha: 0.9);
+  background-color: rgba($color: gray, $alpha: 0.2);
+  color: rgba($color: gray, $alpha: 0.9);
+}
+
+.start-button {
+  padding: 1.5rem 2rem;
+}

@@ -1,0 +1,40 @@
+<mat-card class="pool-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ category?.categoryName }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="margin-bottom: auto">
+    <mat-chip-set>
+      <mat-chip
+        class="player {{ getCssClass(player) }}"
+        *ngFor="let player of category?.players"
+        >{{ player.name }}</mat-chip
+      >
+    </mat-chip-set>
+
+    <!-- <div
+      *ngFor="let player of category?.players"
+      class="player {{ getCssClass(player) }}"
+    >
+      {{ player.name }}
+    </div> -->
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-button
+      color="warn"
+      (click)="onDeleteCategory()"
+      *ngIf="!isDrawStarted()"
+    >
+      Delete
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      style="flex: 1"
+      (click)="onPickPlayer()"
+      *ngIf="isDrawStarted() && !isAnimating() && isPlayerAvailable()"
+    >
+      Random Pick
+    </button>
+  </mat-card-actions>
+</mat-card>

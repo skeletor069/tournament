@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$blue-palette,
+        tertiary: mat.$orange-palette,
+        theme-type: light,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #f3f4f6;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 1rem;
+  height: auto;
+}
+
+button {
+  border-radius: 5px !important;
+}
+
+:root {
+  @include mat.chips-overrides(
+    (
+      outline-color: gray,
+      label-text-color: gray,
+    )
+  );
+
+  @include mat.button-overrides(
+    (
+      filled-container-color: #6366f1,
+      filled-label-text-color: #f3f4f6,
+      outlined-label-text-color: #6366f1,
+      outlined-ripple-color: #cbccf1,
+      filled-ripple-color: #cbccf1,
+      outlined-hover-state-layer-opacity: 0.01,
+    )
+  );
+
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: #f3f4f6,
+    )
+  );
+}

@@ -1,0 +1,32 @@
+<mat-card appearance="outlined" class="draw-panel">
+  <mat-card-header style="display: flex; justify-content: center">
+    <span class="title">Drawing Now</span>
+  </mat-card-header>
+  <mat-card-content class="players-panel" *ngIf="drawStarted()">
+    <!-- <div class="player" *ngFor="let player of currentTeam?.players">
+      {{ player.name }}
+    </div> -->
+    <div class="player {{ getPlayer1Css() }}">
+      {{ getPlayer1Name() }}
+    </div>
+    <div>&amp;</div>
+    <div class="player {{ getPlayer2Css() }}">
+      {{ getPlayer2Name() }}
+    </div>
+  </mat-card-content>
+
+  <mat-card-content
+    class="players-panel"
+    *ngIf="!drawStarted()"
+    style="justify-content: center"
+  >
+    <button
+      mat-flat-button
+      (click)="startDraw()"
+      class="start-button"
+      [disabled]="!groupAndPoolAvailable"
+    >
+      Start Draw
+    </button>
+  </mat-card-content>
+</mat-card>

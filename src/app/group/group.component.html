@@ -1,0 +1,75 @@
+<mat-card
+  appearance="outlined"
+  class="container-card"
+  [class.selected]="isGroupSelected() && !playerUnavailable"
+>
+  <mat-card-header
+    class="title-panel"
+    [class.selected]="isGroupSelected() && !playerUnavailable"
+  >
+    {{ group?.name }}
+  </mat-card-header>
+  <mat-card-content class="group-card">
+    <div *ngFor="let team of group?.teams" class="teams-panel">
+      <div class="team">
+        <!-- <div class="player" *ngFor="let player of team.players">
+          {{ player.name }}
+        </div> -->
+
+        <!-- <div class="player">
+          {{ getPlayer1Name(team) }} &amp; {{ getPlayer2Name(team) }}
+        </div> -->
+
+        <div class="player {{ getPlayer1Css(team) }}">
+          {{ getPlayer1Name(team) }}
+        </div>
+        <div>&amp;</div>
+        <div class="player {{ getPlayer2Css(team) }}">
+          {{ getPlayer2Name(team) }}
+        </div>
+      </div>
+      <button mat-icon-button color="warn" (click)="deleteTeam(team)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-button
+      color="warn"
+      (click)="onDeleteGroup()"
+      *ngIf="!isDrawStarted()"
+    >
+      Delete
+    </button>
+    <button
+      mat-stroked-button
+      style="flex-grow: 1"
+      (click)="onSelectGroup()"
+      *ngIf="
+        isDrawStarted() &&
+        !isAnimating() &&
+        !isGroupSelected() &&
+        !playerUnavailable
+      "
+    >
+      Select
+    </button>
+    <button
+      mat-icon-button
+      *ngIf="
+        (playerUnavailable && isDrawStarted()) ||
+        (!isGroupSelected() && !isAnimating() && isDrawStarted())
+      "
+      [cdkCopyToClipboard]="copyTeams()"
+    >
+      <mat-icon>content_copy</mat-icon>
+    </button>
+    <div
+      style="flex-grow: 1; text-align: center"
+      *ngIf="isGroupSelected() && !playerUnavailable"
+    >
+      Next Team will be assigned here
+    </div>
+  </mat-card-actions>
+</mat-card>

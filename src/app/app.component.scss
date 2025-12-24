@@ -1,0 +1,29 @@
+.player-pools {
+  display: flex;
+  //grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  flex: 0.5;
+}
+
+.player-pool {
+  flex: 1 1 50%;
+  max-width: 50%;
+}
+
+.groups-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+  gap: 1rem;
+}
+
+.groups {
+  display: flex;
+  //grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.group {
+  flex: 1 1 50%;
+  max-width: 50%;
+}

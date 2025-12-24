@@ -1,0 +1,34 @@
+@use "@angular/material" as mat;
+
+.pool-card {
+  background-color: white;
+  height: 100% !important;
+}
+
+.player {
+  // padding: 0.5rem;
+  // border: 1px solid #ccc;
+  // border-radius: 4px;
+  // margin-bottom: 0.5rem;
+}
+
+.picked {
+  @include mat.chips-overrides(
+    (
+      elevated-container-color: #a3e635,
+      outline-color: rgba($color: gray, $alpha: 0.5),
+      label-text-color: rgba($color: black, $alpha: 0.9),
+    )
+  );
+}
+
+.assigned {
+  // background-color: rgba($color: gray, $alpha: 0.5);
+  // color: rgba($color: gray, $alpha: 0.5) !important;
+  @include mat.chips-overrides(
+    (
+      outline-color: rgba($color: gray, $alpha: 0.5),
+      label-text-color: rgba($color: gray, $alpha: 0.5),
+    )
+  );
+}

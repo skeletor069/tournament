@@ -1,0 +1,62 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>history</mat-icon>
+  </button>
+  <span>Tournament Draw - {{ selectedTournament?.name }}</span>
+
+  <span class="example-spacer"></span>
+
+  <button
+    mat-flat-button
+    *ngIf="selectedTournament && showButtons()"
+    (click)="addCategory()"
+  >
+    + Player Pool
+  </button>
+  <button
+    mat-flat-button
+    style="margin-left: 1rem"
+    *ngIf="selectedTournament && showButtons()"
+    (click)="addGroup()"
+  >
+    + Group
+  </button>
+
+  <button
+    mat-flat-button
+    class="new-tournament-btn"
+    style="margin-left: 1rem"
+    *ngIf="
+      selectedTournament &&
+      !selectedTournament.gameStarted &&
+      showStartGameButton()
+    "
+    (click)="startGame()"
+  >
+    Start Game
+  </button>
+
+  <button
+    mat-flat-button
+    class="new-tournament-btn"
+    style="margin-left: 1rem"
+    *ngIf="selectedTournament && selectedTournament.gameStarted"
+    (click)="stopGame()"
+  >
+    Stop Game
+  </button>
+
+  <button
+    mat-flat-button
+    class="new-tournament-btn"
+    style="margin-left: 1rem"
+    *ngIf="selectedTournament"
+    (click)="newTournament()"
+  >
+    Tournaments
+  </button>
+</mat-toolbar>

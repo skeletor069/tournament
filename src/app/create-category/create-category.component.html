@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Create Player Pool</h2>
+<mat-dialog-content>
+  <div style="display: flex; flex-direction: column">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        placeholder="Pool A"
+        required="required"
+        [(ngModel)]="poolName"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Player Names</mat-label>
+      <textarea
+        matInput
+        placeholder="Player1&#10;Player2&#10;Player3"
+        required="required"
+        [(ngModel)]="playerNames"
+      ></textarea>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button (click)="onNoClick()">Cancel</button>
+  <button mat-flat-button (click)="createPool()" cdkFocusInitial>
+    Create Pool
+  </button>
+</mat-dialog-actions>

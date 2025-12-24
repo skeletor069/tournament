@@ -1,0 +1,28 @@
+<div class="center">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      placeholder="WS 2025 Male"
+      required="required"
+      [(ngModel)]="tournamentName"
+    />
+  </mat-form-field>
+  <button
+    mat-flat-button
+    (click)="createNewTournament()"
+    [disabled]="!tournamentName"
+  >
+    Create Tournament
+  </button>
+  <p>Or, select a tournament from the list</p>
+  <div class="tournament-list">
+    <div
+      class="tournament"
+      *ngFor="let tournament of getTournaments()"
+      (click)="loadTournament(tournament)"
+    >
+      {{ tournament.name }}
+    </div>
+  </div>
+</div>
