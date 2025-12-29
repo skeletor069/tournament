@@ -13,6 +13,7 @@ import { CurrentTeamComponent } from './current-team/current-team.component';
 import { ITeam } from './core/team.interface';
 import { StorageService } from './storage.service';
 import { PointsTableComponent } from './points-table/points-table.component';
+import { GroupMatchesComponent } from './group-matches/group-matches.component';
 
 export class DrawState {
   public static animating = false;
@@ -31,6 +32,7 @@ export class DrawState {
     MatButtonModule,
     CurrentTeamComponent,
     PointsTableComponent,
+    GroupMatchesComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

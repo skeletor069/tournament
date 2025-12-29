@@ -62,7 +62,7 @@ export class HeaderComponent {
     if (!this.selectedTournament) return;
 
     this.selectedTournament.groups.forEach((group) => {
-      const groupMatches = this.generateRestOptimizedSchedule(group.teams);
+      const groupMatches = this.generateRoundRobinSchedule(group.teams);
       group.groupMatches = groupMatches;
     });
 
@@ -146,5 +146,56 @@ export class HeaderComponent {
     }
 
     return allMatches;
+  }
+
+  // inside your group.component.ts
+
+  generateRoundRobinSchedule(teams: ITeam[]): IMatch[] {
+    let participants = [...teams];
+
+    // 1. Handle Odd Numbers
+    if (participants.length % 2 !== 0) {
+      participants.push({ id: -1, players: [] });
+    }
+
+    const numTeams = participants.length;
+    const numRounds = numTeams - 1;
+    const half = numTeams / 2;
+    const rounds: IMatch[][] = [];
+
+    // 2. Generate Standard Rounds using Circle Method
+    for (let r = 0; r < numRounds; r++) {
+      const roundMatches: IMatch[] = [];
+      for (let i = 0; i < half; i++) {
+        const home = participants[i];
+        const away = participants[numTeams - 1 - i];
+
+        if (home.id !== -1 && away.id !== -1) {
+          roundMatches.push({ home, away });
+        }
+      }
+      rounds.push(roundMatches);
+
+      // Rotate array (keep first element fixed)
+      participants.splice(1, 0, participants.pop()!);
+    }
+
+    // 3. Interleave to Prevent Back-to-Back Matches
+    // We flip the order of matches in every even-indexed round
+    // so the last players of Round 1 aren't the first of Round 2.
+    const optimizedList: IMatch[] = [];
+
+    for (let i = 0; i < rounds.length; i++) {
+      let currentRound = rounds[i];
+
+      // // Reverse the match order for every second round
+      // if (i % 2 === 1) {
+      //   currentRound.reverse();
+      // }
+
+      optimizedList.push(...currentRound);
+    }
+
+    return optimizedList;
   }
 }

@@ -1,0 +1,34 @@
+.match {
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.vs-holder {
+  display: flex;
+  align-items: center;
+}
+
+.vs {
+  background-color: rgba($color: gray, $alpha: 0.2);
+  color: rgba($color: black, $alpha: 0.7);
+  padding: 0.5rem;
+  border-radius: 25px;
+}
+
+.team {
+  flex: 0.8;
+  text-align: center;
+}
+
+.results {
+  display: flex;
+  align-items: center;
+}
+
+.score {
+  width: 4rem;
+}

@@ -1,0 +1,101 @@
+<div
+  cdkDropList
+  [cdkDropListData]="getMatches()"
+  class="example-list"
+  (cdkDropListDropped)="drop($event)"
+>
+  <!-- @for (match of getMatches(); track match) { -->
+  <!-- <div class="example-box" cdkDrag>{{ item }}</div>
+    -->
+  <mat-card
+    appearance="outlined"
+    class="match"
+    cdkDrag
+    *ngFor="let match of getMatches()"
+  >
+    <mat-card-content class="content">
+      <div class="team">
+        <div class="player" *ngFor="let player of match.home.players">
+          {{ player.name }}
+        </div>
+      </div>
+      <div class="results">
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="score"
+        >
+          <input
+            matInput
+            [(ngModel)]="match.homeScore"
+            placeholder=""
+            style="text-align: center"
+          />
+        </mat-form-field>
+        <mat-checkbox class="won" [(ngModel)]="match.homeWon"></mat-checkbox>
+      </div>
+      <div class="vs-holder"><span class="vs">VS</span></div>
+      <div class="results">
+        <mat-checkbox class="won" [(ngModel)]="match.awayWon"></mat-checkbox>
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="score"
+        >
+          <input
+            matInput
+            placeholder=""
+            [(ngModel)]="match.awayScore"
+            style="text-align: center"
+          />
+        </mat-form-field>
+      </div>
+      <div class="team away-team">
+        <div class="player" *ngFor="let player of match.away.players">
+          {{ player.name }}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <!-- } -->
+</div>
+
+<!-- <mat-card
+  appearance="outlined"
+  class="match"
+  *ngFor="let match of group?.groupMatches"
+>
+  <mat-card-content class="content">
+    <div class="team">
+      <div class="player" *ngFor="let player of match.home.players">
+        {{ player.name }}
+      </div>
+    </div>
+    <div class="results">
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="score"
+      >
+        <input matInput placeholder="" style="text-align: center" />
+      </mat-form-field>
+      <mat-checkbox class="won"></mat-checkbox>
+    </div>
+    <div class="vs-holder"><span class="vs">VS</span></div>
+    <div class="results">
+      <mat-checkbox class="won"></mat-checkbox>
+      <mat-form-field
+        appearance="outline"
+        subscriptSizing="dynamic"
+        class="score"
+      >
+        <input matInput placeholder="" style="text-align: center" />
+      </mat-form-field>
+    </div>
+    <div class="team away-team">
+      <div class="player" *ngFor="let player of match.away.players">
+        {{ player.name }}
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card> -->

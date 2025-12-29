@@ -74,5 +74,12 @@
     </div>
 
     <h3>Group Matches</h3>
+    <div class="groups">
+      <app-group-matches
+        *ngFor="let group of selectedTournament.groups"
+        [group]="group"
+        class="group"
+      ></app-group-matches>
+    </div>
   </div>
 </div>
